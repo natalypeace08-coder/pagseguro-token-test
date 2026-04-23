@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>PagSeguro Direct API Test</title>
+
+    <script type="text/javascript" src="https://stc.international.pagseguro.com/v3/international.pagseguro.min.js?p=999999"></script>
+
+    <script type="text/javascript">
+        var cardToken = new InternationalPagSeguro.CardToken();
+    </script>
+</head>
+
+<body>
+    <a href="javascript:generateCardToken()" target="_self">Click here to Generate the Card Token</a>
+
+    <script type="text/javascript">
+        function generateCardToken() {
+            let card = {
+                number: '5555666677778884',
+                cvc: '123',
+                expiration_month: '02',
+                expiration_year: '2026',
+                holder_name: 'John Doe'
+            };
+
+            cardToken.generate(card)
+                .then(result => console.info("TOKEN:", result))
+                .catch(err => console.error("ERRO:", err));
+        }
+    </script>
+</body>
+</html>
